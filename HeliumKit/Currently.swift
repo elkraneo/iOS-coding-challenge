@@ -7,7 +7,7 @@
 //
 
 
-struct Currently {
+public struct Currently {
     let time: Int
     let summary: String
     let icon: String //FIXME: change for enum

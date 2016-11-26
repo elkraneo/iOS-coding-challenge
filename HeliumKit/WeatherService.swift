@@ -6,16 +6,14 @@
 //  Copyright © 2016 metodowhite. All rights reserved.
 //
 
-import Foundation
-
-
 typealias JSONDictionary = [String: AnyObject]
 
-let url = URL(string: "https://api.darksky.net/forecast/")! //https://api.darksky.net/forecast/[key]/[latitude],[longitude]
+let darkSkyAPIKey = "d984b6b110ddbdc3e99363676241d039"
+let url = URL(string: "https://api.darksky.net/forecast/\(darkSkyAPIKey)/48.121,11.563")! //https://api.darksky.net/forecast/[key]/[latitude],[longitude]
 
 
-class WeatherService {
-    func load<A>(resource: Resource<A>, completion: @escaping (A?) -> ()) {
+public final class WeatherService {
+    public func load<A>(resource: Resource<A>, completion: @escaping (A?) -> ()) {
         URLSession.shared.dataTask(with: resource.url) { data, _, _ in
             guard let data = data else {
                 completion(nil)
@@ -23,5 +21,9 @@ class WeatherService {
             }
             completion(resource.parse(data))
             }.resume()
+    }
+    
+    public init() {
+        print("💬 WeatherService started with APIKey: \(darkSkyAPIKey)")
     }
 }

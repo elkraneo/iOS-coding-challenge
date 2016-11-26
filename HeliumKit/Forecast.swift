@@ -8,7 +8,7 @@
 //  https://darksky.net/dev/docs/forecast
 
 
-struct Forecast {
+public struct Forecast {
     let latitude: Double
     let longitude: Double
     let timezone: String
@@ -29,7 +29,7 @@ extension Forecast {
     }
 }
 
-extension Forecast {
+public extension Forecast {
     static let all = Resource<[Forecast]>(url: url, parseJSON: { json in
         guard let dictionaries = json as? [JSONDictionary] else { return nil }
         return dictionaries.flatMap(Forecast.init)

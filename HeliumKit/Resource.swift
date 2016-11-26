@@ -7,7 +7,7 @@
 //
 
 
-struct Resource<A> {
+public struct Resource<A> {
     let url: URL
     let parse: (Data) -> A?
 }
