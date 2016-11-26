@@ -15,9 +15,15 @@ public enum SpeechAuthorizationStatus {
 }
 
 
+public enum SpeechRecordStatus {
+    case running, notRunning
+}
+
+
 public protocol SpeechServiceDelegate {
     func ready() -> Void
     func received(transcription: String) -> Void
+    func recordStatusDidChange(status: SpeechRecordStatus) -> Void
     func authorizationStatusDidChange(status: SpeechAuthorizationStatus) -> Void
     func availabilityDidChange(available: Bool) -> Void
 }
@@ -61,7 +67,7 @@ public final  class SpeechService: NSObject, SFSpeechRecognizerDelegate {
         }
     }
     
-    public func startRecording() throws {
+    func startRecording() throws {
         
         if let recognitionTask = recognitionTask {
             recognitionTask.cancel()
@@ -108,6 +114,22 @@ public final  class SpeechService: NSObject, SFSpeechRecognizerDelegate {
         audioEngine.prepare()
         
         try audioEngine.start()
+    }
+    
+    func stopRecording() {
+        audioEngine.stop()
+        recognitionRequest?.endAudio()
+    }
+    
+    public func toggleRecording() {
+        if audioEngine.isRunning {
+            audioEngine.stop()
+            recognitionRequest?.endAudio()
+            self.delegate?.recordStatusDidChange(status: .notRunning)
+        } else {
+            try! startRecording()
+            self.delegate?.recordStatusDidChange(status: .running)
+        }
     }
     
     // MARK: SFSpeechRecognizerDelegate

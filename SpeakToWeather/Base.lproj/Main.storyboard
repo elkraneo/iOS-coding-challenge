@@ -32,6 +32,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xbd-hF-A9c">
                                 <rect key="frame" x="16" y="617" width="343" height="30"/>
                                 <state key="normal" title="Hello Weather!"/>
+                                <connections>
+                                    <action selector="recordButtonTapped" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Kp-9P-ggz"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -45,6 +48,10 @@
                             <constraint firstItem="6hK-eR-pwK" firstAttribute="trailing" secondItem="Xbd-hF-A9c" secondAttribute="trailing" id="x0f-he-Gb3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="recordButton" destination="Xbd-hF-A9c" id="c5h-C4-YhV"/>
+                        <outlet property="textView" destination="6hK-eR-pwK" id="xhG-9Q-N0p"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
