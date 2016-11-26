@@ -1,0 +1,427 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AE480ACA1DE9AC1300A26577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE480AC91DE9AC1300A26577 /* AppDelegate.swift */; };
+		AE480ACC1DE9AC1300A26577 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE480ACB1DE9AC1300A26577 /* ViewController.swift */; };
+		AE480ACF1DE9AC1300A26577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE480ACD1DE9AC1300A26577 /* Main.storyboard */; };
+		AE480AD11DE9AC1300A26577 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE480AD01DE9AC1300A26577 /* Assets.xcassets */; };
+		AE480AD41DE9AC1300A26577 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE480AD21DE9AC1300A26577 /* LaunchScreen.storyboard */; };
+		AE480ADF1DE9AC1400A26577 /* SpeakToWeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE480ADE1DE9AC1400A26577 /* SpeakToWeatherTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AE480ADB1DE9AC1400A26577 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE480ABE1DE9AC1300A26577 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE480AC51DE9AC1300A26577;
+			remoteInfo = SpeakToWeather;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AE480AC61DE9AC1300A26577 /* SpeakToWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakToWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE480AC91DE9AC1300A26577 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		AE480ACB1DE9AC1300A26577 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AE480ACE1DE9AC1300A26577 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AE480AD01DE9AC1300A26577 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AE480AD31DE9AC1300A26577 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		AE480AD51DE9AC1300A26577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE480ADA1DE9AC1400A26577 /* SpeakToWeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeakToWeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE480ADE1DE9AC1400A26577 /* SpeakToWeatherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakToWeatherTests.swift; sourceTree = "<group>"; };
+		AE480AE01DE9AC1400A26577 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AE480AC31DE9AC1300A26577 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE480AD71DE9AC1400A26577 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AE480ABD1DE9AC1300A26577 = {
+			isa = PBXGroup;
+			children = (
+				AE480AC81DE9AC1300A26577 /* SpeakToWeather */,
+				AE480ADD1DE9AC1400A26577 /* SpeakToWeatherTests */,
+				AE480AC71DE9AC1300A26577 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AE480AC71DE9AC1300A26577 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE480AC61DE9AC1300A26577 /* SpeakToWeather.app */,
+				AE480ADA1DE9AC1400A26577 /* SpeakToWeatherTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE480AC81DE9AC1300A26577 /* SpeakToWeather */ = {
+			isa = PBXGroup;
+			children = (
+				AE480AC91DE9AC1300A26577 /* AppDelegate.swift */,
+				AE480ACB1DE9AC1300A26577 /* ViewController.swift */,
+				AE480ACD1DE9AC1300A26577 /* Main.storyboard */,
+				AE480AD01DE9AC1300A26577 /* Assets.xcassets */,
+				AE480AD21DE9AC1300A26577 /* LaunchScreen.storyboard */,
+				AE480AD51DE9AC1300A26577 /* Info.plist */,
+			);
+			path = SpeakToWeather;
+			sourceTree = "<group>";
+		};
+		AE480ADD1DE9AC1400A26577 /* SpeakToWeatherTests */ = {
+			isa = PBXGroup;
+			children = (
+				AE480ADE1DE9AC1400A26577 /* SpeakToWeatherTests.swift */,
+				AE480AE01DE9AC1400A26577 /* Info.plist */,
+			);
+			path = SpeakToWeatherTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AE480AC51DE9AC1300A26577 /* SpeakToWeather */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE480AE31DE9AC1400A26577 /* Build configuration list for PBXNativeTarget "SpeakToWeather" */;
+			buildPhases = (
+				AE480AC21DE9AC1300A26577 /* Sources */,
+				AE480AC31DE9AC1300A26577 /* Frameworks */,
+				AE480AC41DE9AC1300A26577 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpeakToWeather;
+			productName = SpeakToWeather;
+			productReference = AE480AC61DE9AC1300A26577 /* SpeakToWeather.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AE480AD91DE9AC1400A26577 /* SpeakToWeatherTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE480AE61DE9AC1400A26577 /* Build configuration list for PBXNativeTarget "SpeakToWeatherTests" */;
+			buildPhases = (
+				AE480AD61DE9AC1400A26577 /* Sources */,
+				AE480AD71DE9AC1400A26577 /* Frameworks */,
+				AE480AD81DE9AC1400A26577 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE480ADC1DE9AC1400A26577 /* PBXTargetDependency */,
+			);
+			name = SpeakToWeatherTests;
+			productName = SpeakToWeatherTests;
+			productReference = AE480ADA1DE9AC1400A26577 /* SpeakToWeatherTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AE480ABE1DE9AC1300A26577 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = metodowhite;
+				TargetAttributes = {
+					AE480AC51DE9AC1300A26577 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = SC8SYTRH6T;
+						ProvisioningStyle = Automatic;
+					};
+					AE480AD91DE9AC1400A26577 = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = SC8SYTRH6T;
+						ProvisioningStyle = Automatic;
+						TestTargetID = AE480AC51DE9AC1300A26577;
+					};
+				};
+			};
+			buildConfigurationList = AE480AC11DE9AC1300A26577 /* Build configuration list for PBXProject "SpeakToWeather" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AE480ABD1DE9AC1300A26577;
+			productRefGroup = AE480AC71DE9AC1300A26577 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AE480AC51DE9AC1300A26577 /* SpeakToWeather */,
+				AE480AD91DE9AC1400A26577 /* SpeakToWeatherTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AE480AC41DE9AC1300A26577 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE480AD41DE9AC1300A26577 /* LaunchScreen.storyboard in Resources */,
+				AE480AD11DE9AC1300A26577 /* Assets.xcassets in Resources */,
+				AE480ACF1DE9AC1300A26577 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE480AD81DE9AC1400A26577 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE480AC21DE9AC1300A26577 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE480ACC1DE9AC1300A26577 /* ViewController.swift in Sources */,
+				AE480ACA1DE9AC1300A26577 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE480AD61DE9AC1400A26577 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE480ADF1DE9AC1400A26577 /* SpeakToWeatherTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AE480ADC1DE9AC1400A26577 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE480AC51DE9AC1300A26577 /* SpeakToWeather */;
+			targetProxy = AE480ADB1DE9AC1400A26577 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AE480ACD1DE9AC1300A26577 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE480ACE1DE9AC1300A26577 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		AE480AD21DE9AC1300A26577 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AE480AD31DE9AC1300A26577 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		AE480AE11DE9AC1400A26577 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AE480AE21DE9AC1400A26577 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AE480AE41DE9AC1400A26577 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SC8SYTRH6T;
+				INFOPLIST_FILE = SpeakToWeather/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = metodowhite.SpeakToWeather;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		AE480AE51DE9AC1400A26577 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = SC8SYTRH6T;
+				INFOPLIST_FILE = SpeakToWeather/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = metodowhite.SpeakToWeather;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		AE480AE71DE9AC1400A26577 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = SC8SYTRH6T;
+				INFOPLIST_FILE = SpeakToWeatherTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = metodowhite.SpeakToWeatherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeakToWeather.app/SpeakToWeather";
+			};
+			name = Debug;
+		};
+		AE480AE81DE9AC1400A26577 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = SC8SYTRH6T;
+				INFOPLIST_FILE = SpeakToWeatherTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = metodowhite.SpeakToWeatherTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeakToWeather.app/SpeakToWeather";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AE480AC11DE9AC1300A26577 /* Build configuration list for PBXProject "SpeakToWeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE480AE11DE9AC1400A26577 /* Debug */,
+				AE480AE21DE9AC1400A26577 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE480AE31DE9AC1400A26577 /* Build configuration list for PBXNativeTarget "SpeakToWeather" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE480AE41DE9AC1400A26577 /* Debug */,
+				AE480AE51DE9AC1400A26577 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		AE480AE61DE9AC1400A26577 /* Build configuration list for PBXNativeTarget "SpeakToWeatherTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE480AE71DE9AC1400A26577 /* Debug */,
+				AE480AE81DE9AC1400A26577 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AE480ABE1DE9AC1300A26577 /* Project object */;
+}
