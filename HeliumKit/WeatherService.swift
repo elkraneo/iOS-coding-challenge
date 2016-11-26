@@ -8,6 +8,12 @@
 
 import Foundation
 
+
+typealias JSONDictionary = [String: AnyObject]
+
+let url = URL(string: "https://api.darksky.net/forecast/")! //https://api.darksky.net/forecast/[key]/[latitude],[longitude]
+
+
 class WeatherService {
     func load<A>(resource: Resource<A>, completion: @escaping (A?) -> ()) {
         URLSession.shared.dataTask(with: resource.url) { data, _, _ in

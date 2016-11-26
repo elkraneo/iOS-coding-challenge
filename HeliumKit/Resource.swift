@@ -6,7 +6,6 @@
 //  Copyright © 2016 metodowhite. All rights reserved.
 //
 
-import Foundation
 
 struct Resource<A> {
     let url: URL
