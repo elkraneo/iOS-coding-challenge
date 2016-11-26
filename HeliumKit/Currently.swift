@@ -28,6 +28,46 @@ public struct Currently {
     let ozone: Double?
 }
 
+
+public enum WeatherIcon: String {
+    case clearDay = "clear-day"
+    case clearNight = "clear-night"
+    case rain = "rain"
+    case snow = "snow"
+    case sleet = "sleet"
+    case wind = "wind"
+    case fog = "fog"
+    case cloudy = "cloudy"
+    case partlyCloudyDay = "artly-cloudy-day"
+    case partlyCloudyNight = "artly-cloudy-night"
+    
+    public func emojiDescription() -> String {
+        switch self {
+        case .clearDay:
+            return "emoji1"
+        case .clearNight:
+            return "emoji2"
+        case .rain:
+            return "emoji3"
+        case .snow:
+            return "emoji4"
+        case .sleet:
+            return "emoji5"
+        case .wind:
+            return "emoji6"
+        case .fog:
+            return "emoji7"
+        case .cloudy:
+            return "emoji8"
+        case .partlyCloudyDay:
+            return "emoji9"
+        case .partlyCloudyNight:
+            return "emoji10"
+        }
+    }
+}
+
+
 extension Currently {
     init?(dictionary: JSONDictionary) {
         do {

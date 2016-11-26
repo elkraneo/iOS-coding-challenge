@@ -12,6 +12,7 @@ public struct Resource<A> {
     let parse: (Data) -> A?
 }
 
+
 extension Resource {
     init(url: URL, parseJSON: @escaping (Any) -> A?) {
         self.url = url

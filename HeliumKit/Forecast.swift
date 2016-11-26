@@ -15,6 +15,7 @@ public struct Forecast {
     let currently: Currently?
 }
 
+
 extension Forecast {
     init?(dictionary: JSONDictionary) {
         do {
@@ -35,6 +36,7 @@ extension Forecast {
         }
     }
 }
+
 
 public extension Forecast {
     static let all = Resource<Forecast>(url: url, parseJSON: { json in

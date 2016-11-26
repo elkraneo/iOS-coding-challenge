@@ -11,6 +11,7 @@ enum JSONError: Error {
     case emptyJSONData, invalidJSONData
 }
 
+
 extension Dictionary {
     func getValue<T>(for key: Key, as _: T) throws -> T? {
         guard let _ = self[key] else { return nil }

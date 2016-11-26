@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AE14A8E21DE9FDC0007F9A3E /* JSONSubscripting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE14A8E11DE9FDC0007F9A3E /* JSONSubscripting.swift */; };
+		AE14A8E41DEA2C6B007F9A3E /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE14A8E31DEA2C6B007F9A3E /* SpeechService.swift */; };
 		AE480ACA1DE9AC1300A26577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE480AC91DE9AC1300A26577 /* AppDelegate.swift */; };
 		AE480ACC1DE9AC1300A26577 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE480ACB1DE9AC1300A26577 /* ViewController.swift */; };
 		AE480ACF1DE9AC1300A26577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE480ACD1DE9AC1300A26577 /* Main.storyboard */; };
@@ -72,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		AE14A8E11DE9FDC0007F9A3E /* JSONSubscripting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSubscripting.swift; sourceTree = "<group>"; };
+		AE14A8E31DEA2C6B007F9A3E /* SpeechService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
 		AE480AC61DE9AC1300A26577 /* SpeakToWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakToWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE480AC91DE9AC1300A26577 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE480ACB1DE9AC1300A26577 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -177,9 +179,9 @@
 			children = (
 				AE480AF01DE9AE8A00A26577 /* HeliumKit.h */,
 				AE480AF11DE9AE8A00A26577 /* Info.plist */,
-				AE14A8E11DE9FDC0007F9A3E /* JSONSubscripting.swift */,
 				AE480B0C1DE9B0B700A26577 /* Models */,
 				AE480B0F1DE9B20A00A26577 /* WeatherService.swift */,
+				AE14A8E31DEA2C6B007F9A3E /* SpeechService.swift */,
 			);
 			path = HeliumKit;
 			sourceTree = "<group>";
@@ -196,8 +198,9 @@
 		AE480B0C1DE9B0B700A26577 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				AE480B0D1DE9B0C400A26577 /* Forecast.swift */,
 				AE480B131DE9B44200A26577 /* Currently.swift */,
+				AE480B0D1DE9B0C400A26577 /* Forecast.swift */,
+				AE14A8E11DE9FDC0007F9A3E /* JSONSubscripting.swift */,
 				AE480B111DE9B27C00A26577 /* Resource.swift */,
 			);
 			name = Models;
@@ -408,6 +411,7 @@
 				AE480B141DE9B44200A26577 /* Currently.swift in Sources */,
 				AE14A8E21DE9FDC0007F9A3E /* JSONSubscripting.swift in Sources */,
 				AE480B0E1DE9B0C400A26577 /* Forecast.swift in Sources */,
+				AE14A8E41DEA2C6B007F9A3E /* SpeechService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

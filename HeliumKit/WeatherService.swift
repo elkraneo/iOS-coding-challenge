@@ -14,6 +14,11 @@ let url = URL(string: "https://api.darksky.net/forecast/\(darkSkyAPIKey)/48.121,
 
 
 public final class WeatherService {
+   
+    public init() {
+        print("🌤 WeatherService started with APIKey: \(darkSkyAPIKey)")
+    }
+
     public func load<A>(resource: Resource<A>, completion: @escaping (A?) -> ()) {
         URLSession.shared.dataTask(with: resource.url) { data, _, _ in
             guard let data = data else {
@@ -24,7 +29,4 @@ public final class WeatherService {
             }.resume()
     }
     
-    public init() {
-        print("💬 WeatherService started with APIKey: \(darkSkyAPIKey)")
-    }
 }
