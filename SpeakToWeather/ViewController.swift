@@ -30,7 +30,7 @@ class ViewController: UIViewController, SpeechServiceDelegate {
         
         // Disable the record buttons until authorization has been granted.
         recordButton.isEnabled = false
-        textView.text = "(Go ahead, I'm listening)"
+        textView.text = "(Go ahead, press Hello Weather!)"
     }
     
     // MARK: SpeechServiceDelegate
@@ -39,6 +39,10 @@ class ViewController: UIViewController, SpeechServiceDelegate {
         print("Speech ready.")
         recordButton.isEnabled = true
         recordButton.setTitle("Hello Weather!", for: [])
+        
+        weatherService?.load(resource: Forecast.all) { result in
+            print(result)
+        }
     }
     
     func received(transcription: String) {
@@ -70,7 +74,7 @@ class ViewController: UIViewController, SpeechServiceDelegate {
         print("💬 Availability changed: \(available)")
         if available {
             recordButton.isEnabled = true
-            recordButton.setTitle("Start Recording", for: [])
+            recordButton.setTitle("Hello Weather!", for: [])
         } else {
             recordButton.isEnabled = false
             recordButton.setTitle("Recognition not available", for: .disabled)

@@ -44,25 +44,25 @@ public enum WeatherIcon: String {
     public func emojiDescription() -> String {
         switch self {
         case .clearDay:
-            return "emoji1"
+            return "☀️"
         case .clearNight:
-            return "emoji2"
+            return "🌌"
         case .rain:
-            return "emoji3"
+            return "☔️"
         case .snow:
-            return "emoji4"
+            return "❄️"
         case .sleet:
-            return "emoji5"
+            return "🌨"
         case .wind:
-            return "emoji6"
+            return "💨"
         case .fog:
-            return "emoji7"
+            return "🌫"
         case .cloudy:
-            return "emoji8"
+            return "☁️"
         case .partlyCloudyDay:
-            return "emoji9"
+            return "⛅️"
         case .partlyCloudyNight:
-            return "emoji10"
+            return "☁️🌃"
         }
     }
 }
