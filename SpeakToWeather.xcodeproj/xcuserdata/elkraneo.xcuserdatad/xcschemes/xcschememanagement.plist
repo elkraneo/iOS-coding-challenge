@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>HeliumKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>SpeakToWeather.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,16 @@
 			<true/>
 		</dict>
 		<key>AE480AD91DE9AC1400A26577</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AE480AED1DE9AE8A00A26577</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AE480AF51DE9AE8A00A26577</key>
 		<dict>
 			<key>primary</key>
 			<true/>
