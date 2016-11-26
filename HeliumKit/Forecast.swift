@@ -12,26 +12,34 @@ public struct Forecast {
     let latitude: Double
     let longitude: Double
     let timezone: String
-    let currently: Currently
+    let currently: Currently?
 }
 
 extension Forecast {
     init?(dictionary: JSONDictionary) {
-        guard let latitude = dictionary["latitude"] as? Double,
-            let longitude = dictionary["longitude"] as? Double,
-            let timezone = dictionary["timezone"] as? String,
-            let currently = dictionary["currently"] as? Currently else { return nil }
-        
-        self.latitude = latitude
-        self.longitude = longitude
-        self.timezone = timezone
-        self.currently = currently
+        do {
+            guard let latitude = try dictionary.getValue(for: "latitude", as: Double()),
+                let longitude = try dictionary.getValue(for: "longitude", as: Double()),
+                let timezone = try dictionary.getValue(for: "timezone", as: String()) else { return nil }
+            
+            self.latitude = latitude
+            self.longitude = longitude
+            self.timezone = timezone
+            
+            guard let currently = try dictionary.getValue(for: "currently", as: JSONDictionary()) else { return nil }
+            
+            self.currently = Currently(dictionary: currently)
+        }
+        catch {
+            return nil
+        }
     }
 }
 
 public extension Forecast {
-    static let all = Resource<[Forecast]>(url: url, parseJSON: { json in
-        guard let dictionaries = json as? [JSONDictionary] else { return nil }
-        return dictionaries.flatMap(Forecast.init)
+    static let all = Resource<Forecast>(url: url, parseJSON: { json in
+        guard let dictionary = json as? JSONDictionary else { return nil }
+        
+        return Forecast(dictionary: dictionary)
     })
 }

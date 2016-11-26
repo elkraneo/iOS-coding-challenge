@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE14A8E21DE9FDC0007F9A3E /* JSONSubscripting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE14A8E11DE9FDC0007F9A3E /* JSONSubscripting.swift */; };
 		AE480ACA1DE9AC1300A26577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE480AC91DE9AC1300A26577 /* AppDelegate.swift */; };
 		AE480ACC1DE9AC1300A26577 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE480ACB1DE9AC1300A26577 /* ViewController.swift */; };
 		AE480ACF1DE9AC1300A26577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE480ACD1DE9AC1300A26577 /* Main.storyboard */; };
@@ -70,6 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AE14A8E11DE9FDC0007F9A3E /* JSONSubscripting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONSubscripting.swift; sourceTree = "<group>"; };
 		AE480AC61DE9AC1300A26577 /* SpeakToWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakToWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE480AC91DE9AC1300A26577 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE480ACB1DE9AC1300A26577 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -173,9 +175,10 @@
 		AE480AEF1DE9AE8A00A26577 /* HeliumKit */ = {
 			isa = PBXGroup;
 			children = (
-				AE480B0C1DE9B0B700A26577 /* Models */,
 				AE480AF01DE9AE8A00A26577 /* HeliumKit.h */,
 				AE480AF11DE9AE8A00A26577 /* Info.plist */,
+				AE14A8E11DE9FDC0007F9A3E /* JSONSubscripting.swift */,
+				AE480B0C1DE9B0B700A26577 /* Models */,
 				AE480B0F1DE9B20A00A26577 /* WeatherService.swift */,
 			);
 			path = HeliumKit;
@@ -403,6 +406,7 @@
 				AE480B121DE9B27C00A26577 /* Resource.swift in Sources */,
 				AE480B101DE9B20A00A26577 /* WeatherService.swift in Sources */,
 				AE480B141DE9B44200A26577 /* Currently.swift in Sources */,
+				AE14A8E21DE9FDC0007F9A3E /* JSONSubscripting.swift in Sources */,
 				AE480B0E1DE9B0C400A26577 /* Forecast.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -705,6 +709,7 @@
 				AE480AE51DE9AC1400A26577 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE480AE61DE9AC1400A26577 /* Build configuration list for PBXNativeTarget "SpeakToWeatherTests" */ = {
 			isa = XCConfigurationList;
@@ -713,6 +718,7 @@
 				AE480AE81DE9AC1400A26577 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE480B051DE9AE8A00A26577 /* Build configuration list for PBXNativeTarget "HeliumKit" */ = {
 			isa = XCConfigurationList;
@@ -721,6 +727,7 @@
 				AE480B071DE9AE8A00A26577 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AE480B091DE9AE8A00A26577 /* Build configuration list for PBXNativeTarget "HeliumKitTests" */ = {
 			isa = XCConfigurationList;
@@ -729,6 +736,7 @@
 				AE480B0B1DE9AE8A00A26577 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

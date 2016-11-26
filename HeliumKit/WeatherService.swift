@@ -6,7 +6,8 @@
 //  Copyright © 2016 metodowhite. All rights reserved.
 //
 
-typealias JSONDictionary = [String: AnyObject]
+
+public typealias JSONDictionary = [String: Any]
 
 let darkSkyAPIKey = "d984b6b110ddbdc3e99363676241d039"
 let url = URL(string: "https://api.darksky.net/forecast/\(darkSkyAPIKey)/48.121,11.563")! //https://api.darksky.net/forecast/[key]/[latitude],[longitude]
