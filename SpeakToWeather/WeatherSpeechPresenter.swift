@@ -24,19 +24,26 @@ class WeatherSpeechPresenter: SpeechServiceDelegate {
     private let keywords = ["weather", "cold", "hot", "cloud", "sunny"]
     private(set) var text = "(Go ahead, press Hello Weather!)" {
         didSet {
-            delegate.speechTextReceived(text: text)
+            DispatchQueue.main.async {
+                self.delegate.speechTextReceived(text: self.text)
+            }
         }
     }
     private(set) var recordButtonTitle = "Hello Weather!" {
         didSet {
-            delegate.speechStatusDidChange()
+            DispatchQueue.main.async {
+                self.delegate.speechStatusDidChange()
+            }
         }
     }
     private(set) var recordButtonEnabled = false {
         didSet {
-            delegate.speechStatusDidChange()
+            DispatchQueue.main.async {
+                self.delegate.speechStatusDidChange()
+            }
         }
     }
+    private(set) var forecastGraphicSummary: String?
     
     
     init(delegate: WeatherSpeechPresenterDelegate) {
@@ -47,21 +54,27 @@ class WeatherSpeechPresenter: SpeechServiceDelegate {
     
     func checkKeywordIn(text: String) {
         for word in keywords {
-            if let index = text.range(of: word) {
-                insertWeather(to: text, at: index.upperBound, withCompletion: { (parsedText) in
-                    DispatchQueue.main.async {
-                        self.text = parsedText
-                    }
-                })
-            }
+            guard let index = text.range(of: word) else { return }
+            
+            insertWeather(to: text, at: index.upperBound, withCompletion: { (parsedText) in
+                self.text = parsedText
+            })
         }
     }
     
     func insertWeather(to text: String, at index: String.Index, withCompletion completion: @escaping (String)->()) {
         var parsedText = text
+        
+        //Use cached forecast for this session if available
+        if let _ = forecastGraphicSummary {
+            parsedText.insert(contentsOf: " [\(self.forecastGraphicSummary ?? "❌")]".characters, at: index)
+            completion(parsedText)
+            return
+        }
+        
         weatherService.load(resource: Forecast.all) { result in
-            let forecast = result?.graphicSummary ?? "❌"
-            parsedText.insert(contentsOf: " [\(forecast)]".characters, at: index)
+            self.forecastGraphicSummary = result?.graphicSummary
+            parsedText.insert(contentsOf: " [\(self.forecastGraphicSummary ?? "❌")]".characters, at: index)
             completion(parsedText)
         }
     }
@@ -76,10 +89,11 @@ class WeatherSpeechPresenter: SpeechServiceDelegate {
         print("💬 Speech ready.")
         recordButtonEnabled = true
         recordButtonTitle = "Hello Weather!"
+        forecastGraphicSummary = nil
     }
     
     func received(transcription: String) {
-        //print("💬 Received: \(transcription)")
+        print("💬 Received: \(transcription)")
         text = transcription
         checkKeywordIn(text: transcription)
     }
