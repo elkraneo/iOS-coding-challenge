@@ -10,7 +10,7 @@
 		AE14A8E21DE9FDC0007F9A3E /* JSONSubscripting.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE14A8E11DE9FDC0007F9A3E /* JSONSubscripting.swift */; };
 		AE14A8E41DEA2C6B007F9A3E /* SpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE14A8E31DEA2C6B007F9A3E /* SpeechService.swift */; };
 		AE480ACA1DE9AC1300A26577 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE480AC91DE9AC1300A26577 /* AppDelegate.swift */; };
-		AE480ACC1DE9AC1300A26577 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE480ACB1DE9AC1300A26577 /* ViewController.swift */; };
+		AE480ACC1DE9AC1300A26577 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE480ACB1DE9AC1300A26577 /* WeatherViewController.swift */; };
 		AE480ACF1DE9AC1300A26577 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE480ACD1DE9AC1300A26577 /* Main.storyboard */; };
 		AE480AD11DE9AC1300A26577 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE480AD01DE9AC1300A26577 /* Assets.xcassets */; };
 		AE480AD41DE9AC1300A26577 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE480AD21DE9AC1300A26577 /* LaunchScreen.storyboard */; };
@@ -24,6 +24,8 @@
 		AE480B101DE9B20A00A26577 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE480B0F1DE9B20A00A26577 /* WeatherService.swift */; };
 		AE480B121DE9B27C00A26577 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE480B111DE9B27C00A26577 /* Resource.swift */; };
 		AE480B141DE9B44200A26577 /* Currently.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE480B131DE9B44200A26577 /* Currently.swift */; };
+		AEDBD0CD1DEB4F2B00B092EA /* String+Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDBD0CC1DEB4F2B00B092EA /* String+Words.swift */; };
+		AEE4CD761DEB025B00C9EC78 /* WeatherSpeechPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4CD751DEB025B00C9EC78 /* WeatherSpeechPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,7 +78,7 @@
 		AE14A8E31DEA2C6B007F9A3E /* SpeechService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechService.swift; sourceTree = "<group>"; };
 		AE480AC61DE9AC1300A26577 /* SpeakToWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakToWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE480AC91DE9AC1300A26577 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AE480ACB1DE9AC1300A26577 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AE480ACB1DE9AC1300A26577 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		AE480ACE1DE9AC1300A26577 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AE480AD01DE9AC1300A26577 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE480AD31DE9AC1300A26577 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -94,6 +96,8 @@
 		AE480B0F1DE9B20A00A26577 /* WeatherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		AE480B111DE9B27C00A26577 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		AE480B131DE9B44200A26577 /* Currently.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currently.swift; sourceTree = "<group>"; };
+		AEDBD0CC1DEB4F2B00B092EA /* String+Words.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Words.swift"; sourceTree = "<group>"; };
+		AEE4CD751DEB025B00C9EC78 /* WeatherSpeechPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherSpeechPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				AE480AC91DE9AC1300A26577 /* AppDelegate.swift */,
-				AE480ACB1DE9AC1300A26577 /* ViewController.swift */,
+				AE480ACB1DE9AC1300A26577 /* WeatherViewController.swift */,
+				AEE4CD751DEB025B00C9EC78 /* WeatherSpeechPresenter.swift */,
 				AE480ACD1DE9AC1300A26577 /* Main.storyboard */,
 				AE480AD01DE9AC1300A26577 /* Assets.xcassets */,
 				AE480AD21DE9AC1300A26577 /* LaunchScreen.storyboard */,
@@ -182,6 +187,7 @@
 				AE480B0C1DE9B0B700A26577 /* Models */,
 				AE480B0F1DE9B20A00A26577 /* WeatherService.swift */,
 				AE14A8E31DEA2C6B007F9A3E /* SpeechService.swift */,
+				AEDBD0CC1DEB4F2B00B092EA /* String+Words.swift */,
 			);
 			path = HeliumKit;
 			sourceTree = "<group>";
@@ -389,7 +395,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE480ACC1DE9AC1300A26577 /* ViewController.swift in Sources */,
+				AE480ACC1DE9AC1300A26577 /* WeatherViewController.swift in Sources */,
+				AEE4CD761DEB025B00C9EC78 /* WeatherSpeechPresenter.swift in Sources */,
 				AE480ACA1DE9AC1300A26577 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +419,7 @@
 				AE14A8E21DE9FDC0007F9A3E /* JSONSubscripting.swift in Sources */,
 				AE480B0E1DE9B0C400A26577 /* Forecast.swift in Sources */,
 				AE14A8E41DEA2C6B007F9A3E /* SpeechService.swift in Sources */,
+				AEDBD0CD1DEB4F2B00B092EA /* String+Words.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

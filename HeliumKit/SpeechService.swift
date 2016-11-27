@@ -15,15 +15,10 @@ public enum SpeechAuthorizationStatus {
 }
 
 
-public enum SpeechRecordStatus {
-    case running, notRunning
-}
-
-
 public protocol SpeechServiceDelegate {
     func ready() -> Void
     func received(transcription: String) -> Void
-    func recordStatusDidChange(status: SpeechRecordStatus) -> Void
+    func recordStatusDidChange(running: Bool) -> Void
     func authorizationStatusDidChange(status: SpeechAuthorizationStatus) -> Void
     func availabilityDidChange(available: Bool) -> Void
 }
@@ -31,19 +26,18 @@ public protocol SpeechServiceDelegate {
 
 public final  class SpeechService: NSObject, SFSpeechRecognizerDelegate {
     
-    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: Locale.preferredLanguages.first!))!
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))! // Locale(identifier: Locale.preferredLanguages.first
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     private var delegate: SpeechServiceDelegate?
     
-    override init() {
+    public override init() {
         super.init()
         print("💬 SpeechService started")
     }
     
-    public convenience init(delegate: SpeechServiceDelegate) {
-        self.init()
+    public func requestAuthorization(delegate: SpeechServiceDelegate) {
         self.delegate = delegate
         
         speechRecognizer.delegate = self
@@ -125,10 +119,10 @@ public final  class SpeechService: NSObject, SFSpeechRecognizerDelegate {
         if audioEngine.isRunning {
             audioEngine.stop()
             recognitionRequest?.endAudio()
-            self.delegate?.recordStatusDidChange(status: .notRunning)
+            self.delegate?.recordStatusDidChange(running: false)
         } else {
             try! startRecording()
-            self.delegate?.recordStatusDidChange(status: .running)
+            self.delegate?.recordStatusDidChange(running: false)
         }
     }
     
