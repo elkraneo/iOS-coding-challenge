@@ -27,7 +27,7 @@ class WeatherViewController: UIViewController, WeatherSpeechPresenterDelegate {
         super.viewDidLoad()
         
         recordButton.isEnabled = presenter.recordButtonEnabled
-        textView.text = presenter.text
+        textView.text = presenter.transcriptionFormatted
     }
     
     // MARK: Interface Builder actions
@@ -44,6 +44,6 @@ class WeatherViewController: UIViewController, WeatherSpeechPresenterDelegate {
     }
     
     func speechTextReceived(text: String) {
-        textView.text = presenter.text
+        textView.text = presenter.transcriptionFormatted
     }
 }
