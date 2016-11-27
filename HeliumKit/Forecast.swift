@@ -13,6 +13,10 @@ public struct Forecast {
     let longitude: Double
     let timezone: String
     let currently: Currently?
+    public var graphicSummary: String? {
+        guard let icon = currently?.icon else { return nil }
+        return WeatherIcon(rawValue: icon)?.emojiDescription()
+    }
 }
 
 

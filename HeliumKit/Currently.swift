@@ -7,7 +7,7 @@
 //
 
 
-public struct Currently {
+struct Currently {
     let time: Int
     let summary: String?
     let icon: String? //FIXME: change for enum
@@ -29,7 +29,7 @@ public struct Currently {
 }
 
 
-public enum WeatherIcon: String {
+enum WeatherIcon: String {
     case clearDay = "clear-day"
     case clearNight = "clear-night"
     case rain = "rain"
@@ -38,8 +38,8 @@ public enum WeatherIcon: String {
     case wind = "wind"
     case fog = "fog"
     case cloudy = "cloudy"
-    case partlyCloudyDay = "artly-cloudy-day"
-    case partlyCloudyNight = "artly-cloudy-night"
+    case partlyCloudyDay = "partly-cloudy-day"
+    case partlyCloudyNight = "partly-cloudy-night"
     
     public func emojiDescription() -> String {
         switch self {

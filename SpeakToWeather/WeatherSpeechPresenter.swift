@@ -43,19 +43,26 @@ class WeatherSpeechPresenter: SpeechServiceDelegate {
         self.delegate = delegate
         
         speechService.requestAuthorization(delegate: self)
-        
-        //        weatherService.load(resource: Forecast.all) { result in
-        //            print(result)
-        //        }
     }
     
     func checkKeywordIn(text: String) {
-        var parsedText = text
         for word in keywords {
             if let index = text.range(of: word) {
-                parsedText.insert(contentsOf: " [😀]".characters, at: index.upperBound)
-                self.text = parsedText
+                insertWeather(to: text, at: index.upperBound, withCompletion: { (parsedText) in
+                    DispatchQueue.main.async {
+                        self.text = parsedText
+                    }
+                })
             }
+        }
+    }
+    
+    func insertWeather(to text: String, at index: String.Index, withCompletion completion: @escaping (String)->()) {
+        var parsedText = text
+        weatherService.load(resource: Forecast.all) { result in
+            let forecast = result?.graphicSummary ?? "❌"
+            parsedText.insert(contentsOf: " [\(forecast)]".characters, at: index)
+            completion(parsedText)
         }
     }
     
