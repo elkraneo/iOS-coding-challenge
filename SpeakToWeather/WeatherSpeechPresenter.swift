@@ -67,14 +67,14 @@ class WeatherSpeechPresenter: SpeechServiceDelegate {
         
         //Use cached forecast for this session if available
         if let _ = forecastGraphicSummary {
-            parsedText.insert(contentsOf: " [\(self.forecastGraphicSummary ?? "❌")]".characters, at: index)
+            parsedText.insert(contentsOf: " \(self.forecastGraphicSummary ?? "❌")".characters, at: index)
             completion(parsedText)
             return
         }
         
         weatherService.load(resource: Forecast.all) { result in
             self.forecastGraphicSummary = result?.graphicSummary
-            parsedText.insert(contentsOf: " [\(self.forecastGraphicSummary ?? "❌")]".characters, at: index)
+            parsedText.insert(contentsOf: " \(self.forecastGraphicSummary ?? "❌")".characters, at: index)
             completion(parsedText)
         }
     }

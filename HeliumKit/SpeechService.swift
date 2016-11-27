@@ -26,7 +26,7 @@ public protocol SpeechServiceDelegate {
 
 public final  class SpeechService: NSObject, SFSpeechRecognizerDelegate {
     
-    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))! // Locale(identifier: Locale.preferredLanguages.first
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))! //FIXME: implemet with Locale.current
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()

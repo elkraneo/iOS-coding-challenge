@@ -14,8 +14,18 @@ public struct Forecast {
     let timezone: String
     let currently: Currently?
     public var graphicSummary: String? {
-        guard let icon = currently?.icon else { return nil }
-        return WeatherIcon(rawValue: icon)?.emojiDescription()
+        guard let iconName = currently?.icon,
+            let iconGraphic = WeatherIcon(rawValue: iconName)?.emojiDescription(),
+            let temperature = currently?.temperature else { return nil }
+        
+        let measurement = Measurement(value: temperature, unit: UnitTemperature.fahrenheit)
+        let formatter = MeasurementFormatter()
+        formatter.numberFormatter.maximumFractionDigits = 0
+        let temperatureFormatted = formatter.string(from: measurement)
+        
+        let composedGraphicSummary = "(\(iconGraphic) \(temperatureFormatted))"
+        
+        return composedGraphicSummary
     }
 }
 
