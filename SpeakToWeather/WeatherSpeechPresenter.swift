@@ -101,10 +101,10 @@ class WeatherSpeechPresenter: SpeechServiceDelegate {
     
     func recordStatusDidChange(running: Bool) {
         if running {
+            recordButtonTitle = "Stop recording"
+        } else {
             recordButtonEnabled = false
             recordButtonTitle = "Stopping"
-        } else {
-            recordButtonTitle = "Stop recording"
         }
     }
     

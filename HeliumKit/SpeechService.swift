@@ -122,7 +122,7 @@ public final  class SpeechService: NSObject, SFSpeechRecognizerDelegate {
             self.delegate?.recordStatusDidChange(running: false)
         } else {
             try! startRecording()
-            self.delegate?.recordStatusDidChange(running: false)
+            self.delegate?.recordStatusDidChange(running: true)
         }
     }
     
