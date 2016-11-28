@@ -8,6 +8,10 @@
 //  https://darksky.net/dev/docs/forecast
 
 
+private let darkSkyAPIKey = "d984b6b110ddbdc3e99363676241d039"
+private let url = URL(string: "https://api.darksky.net/forecast/\(darkSkyAPIKey)/\(WeatherService.location)")! //https://api.darksky.net/forecast/[key]/[latitude],[longitude]
+
+
 public struct Forecast {
     let latitude: Double
     let longitude: Double
@@ -22,7 +26,6 @@ public struct Forecast {
         let formatter = MeasurementFormatter()
         formatter.numberFormatter.maximumFractionDigits = 0
         let temperatureFormatted = formatter.string(from: measurement)
-        
         let composedGraphicSummary = "(\(iconGraphic) \(temperatureFormatted))"
         
         return composedGraphicSummary

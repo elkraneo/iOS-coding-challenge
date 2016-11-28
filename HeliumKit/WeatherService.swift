@@ -9,16 +9,16 @@
 
 public typealias JSONDictionary = [String: Any]
 
-let darkSkyAPIKey = "d984b6b110ddbdc3e99363676241d039"
-let url = URL(string: "https://api.darksky.net/forecast/\(darkSkyAPIKey)/48.121,11.563")! //https://api.darksky.net/forecast/[key]/[latitude],[longitude]
-
 
 public final class WeatherService {
-   
+    
+    static private(set) var location = "48.121,11.563" //[latitude],[longitude]
+    
+    
     public init() {
-        print("🌤 WeatherService started with APIKey: \(darkSkyAPIKey)")
+        print("🌤 Weather service: started")
     }
-
+    
     public func load<A>(resource: Resource<A>, completion: @escaping (A?) -> ()) {
         URLSession.shared.dataTask(with: resource.url) { data, _, _ in
             guard let data = data else {
@@ -28,5 +28,4 @@ public final class WeatherService {
             completion(resource.parse(data))
             }.resume()
     }
-    
 }

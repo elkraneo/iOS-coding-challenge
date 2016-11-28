@@ -24,8 +24,9 @@
 		AE480B101DE9B20A00A26577 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE480B0F1DE9B20A00A26577 /* WeatherService.swift */; };
 		AE480B121DE9B27C00A26577 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE480B111DE9B27C00A26577 /* Resource.swift */; };
 		AE480B141DE9B44200A26577 /* Currently.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE480B131DE9B44200A26577 /* Currently.swift */; };
+		AE5E03561DEBC4BC0093C22B /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5E03551DEBC4BC0093C22B /* LocationService.swift */; };
 		AEDBD0CD1DEB4F2B00B092EA /* String+Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDBD0CC1DEB4F2B00B092EA /* String+Words.swift */; };
-		AEE4CD761DEB025B00C9EC78 /* WeatherSpeechPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4CD751DEB025B00C9EC78 /* WeatherSpeechPresenter.swift */; };
+		AEE4CD761DEB025B00C9EC78 /* WeatherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4CD751DEB025B00C9EC78 /* WeatherPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,8 +97,9 @@
 		AE480B0F1DE9B20A00A26577 /* WeatherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		AE480B111DE9B27C00A26577 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		AE480B131DE9B44200A26577 /* Currently.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currently.swift; sourceTree = "<group>"; };
+		AE5E03551DEBC4BC0093C22B /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		AEDBD0CC1DEB4F2B00B092EA /* String+Words.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Words.swift"; sourceTree = "<group>"; };
-		AEE4CD751DEB025B00C9EC78 /* WeatherSpeechPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherSpeechPresenter.swift; sourceTree = "<group>"; };
+		AEE4CD751DEB025B00C9EC78 /* WeatherPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,7 +163,7 @@
 			children = (
 				AE480AC91DE9AC1300A26577 /* AppDelegate.swift */,
 				AE480ACB1DE9AC1300A26577 /* WeatherViewController.swift */,
-				AEE4CD751DEB025B00C9EC78 /* WeatherSpeechPresenter.swift */,
+				AEE4CD751DEB025B00C9EC78 /* WeatherPresenter.swift */,
 				AE480ACD1DE9AC1300A26577 /* Main.storyboard */,
 				AE480AD01DE9AC1300A26577 /* Assets.xcassets */,
 				AE480AD21DE9AC1300A26577 /* LaunchScreen.storyboard */,
@@ -187,6 +189,7 @@
 				AE480B0C1DE9B0B700A26577 /* Models */,
 				AE480B0F1DE9B20A00A26577 /* WeatherService.swift */,
 				AE14A8E31DEA2C6B007F9A3E /* SpeechService.swift */,
+				AE5E03551DEBC4BC0093C22B /* LocationService.swift */,
 				AEDBD0CC1DEB4F2B00B092EA /* String+Words.swift */,
 			);
 			path = HeliumKit;
@@ -312,7 +315,7 @@
 				TargetAttributes = {
 					AE480AC51DE9AC1300A26577 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = SC8SYTRH6T;
+						DevelopmentTeam = 73R4GPW85H;
 						ProvisioningStyle = Automatic;
 					};
 					AE480AD91DE9AC1400A26577 = {
@@ -323,7 +326,7 @@
 					};
 					AE480AED1DE9AE8A00A26577 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = SC8SYTRH6T;
+						DevelopmentTeam = 73R4GPW85H;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -396,7 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE480ACC1DE9AC1300A26577 /* WeatherViewController.swift in Sources */,
-				AEE4CD761DEB025B00C9EC78 /* WeatherSpeechPresenter.swift in Sources */,
+				AEE4CD761DEB025B00C9EC78 /* WeatherPresenter.swift in Sources */,
 				AE480ACA1DE9AC1300A26577 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +418,7 @@
 			files = (
 				AE480B121DE9B27C00A26577 /* Resource.swift in Sources */,
 				AE480B101DE9B20A00A26577 /* WeatherService.swift in Sources */,
+				AE5E03561DEBC4BC0093C22B /* LocationService.swift in Sources */,
 				AE480B141DE9B44200A26577 /* Currently.swift in Sources */,
 				AE14A8E21DE9FDC0007F9A3E /* JSONSubscripting.swift in Sources */,
 				AE480B0E1DE9B0C400A26577 /* Forecast.swift in Sources */,
@@ -574,10 +578,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = SC8SYTRH6T;
+				DEVELOPMENT_TEAM = 73R4GPW85H;
 				INFOPLIST_FILE = SpeakToWeather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = metodowhite.SpeakToWeather;
+				PRODUCT_BUNDLE_IDENTIFIER = elkraneo.SpeakToWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -588,10 +592,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = SC8SYTRH6T;
+				DEVELOPMENT_TEAM = 73R4GPW85H;
 				INFOPLIST_FILE = SpeakToWeather/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = metodowhite.SpeakToWeather;
+				PRODUCT_BUNDLE_IDENTIFIER = elkraneo.SpeakToWeather;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -632,16 +636,17 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = SC8SYTRH6T;
+				DEVELOPMENT_TEAM = 73R4GPW85H;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = HeliumKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = metodowhite.HeliumKit;
+				PRODUCT_BUNDLE_IDENTIFIER = elkraneo.HeliumKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -656,16 +661,17 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = SC8SYTRH6T;
+				DEVELOPMENT_TEAM = 73R4GPW85H;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = HeliumKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = metodowhite.HeliumKit;
+				PRODUCT_BUNDLE_IDENTIFIER = elkraneo.HeliumKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;

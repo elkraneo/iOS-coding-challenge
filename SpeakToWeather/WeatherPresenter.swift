@@ -16,12 +16,13 @@ protocol WeatherSpeechPresenterDelegate {
 }
 
 
-class WeatherSpeechPresenter: SpeechServiceDelegate {
+class WeatherPresenter: SpeechServiceDelegate, LocationServiceDelegate {
     
     private let weatherService = WeatherService()
     private let speechService = SpeechService()
+    private let locationService = LocationService()
     private let delegate: WeatherSpeechPresenterDelegate
-    private let keywords = ["weather", "location", "cold", "cool", "hot", "cloud", "clouds", "sun", "sunny", "outside", "gloves", "sky"]
+    private let keywords = ["weather", "location", "cold", "cool", "hot", "cloud", "clouds", "sun", "sunny", "outside", "gloves", "sky", "warm", "fog", "rain", "snow", "tornado"]
     private var transcriptionWordList = [String]() {
         didSet {
             self.checkKeywordsInTranscription()
@@ -44,7 +45,8 @@ class WeatherSpeechPresenter: SpeechServiceDelegate {
             self.delegate.speechStatusDidChange()
         }
     }
-    private lazy var forecastGraphicSummary: String =  {
+    private lazy var forecastGraphicSummary: String? =  {
+        self.locationService.requestAuthorization()
         self.weatherService.load(resource: Forecast.all) { result in
             guard let graphicSummary = result?.graphicSummary else { return }
             self.forecastGraphicSummary = graphicSummary
@@ -56,7 +58,6 @@ class WeatherSpeechPresenter: SpeechServiceDelegate {
     
     init(delegate: WeatherSpeechPresenterDelegate) {
         self.delegate = delegate
-        
         speechService.requestAuthorization(delegate: self)
     }
     
@@ -100,10 +101,12 @@ class WeatherSpeechPresenter: SpeechServiceDelegate {
     func recordStatusDidChange(running: Bool) {
         if running {
             recordButtonTitle = "Stop recording"
+            locationService.startUpdatingLocation(delegate: self)
         } else {
             recordButtonEnabled = false
             recordButtonTitle = "Stopping"
-            //forecastGraphicSummary = nil
+            locationService.stopUpdatingLocation()
+            // forecastGraphicSummary = nil
         }
     }
     
@@ -137,4 +140,11 @@ class WeatherSpeechPresenter: SpeechServiceDelegate {
             recordButtonTitle = "Recognition not available"
         }
     }
+    
+    // MARK: LocationServiceDelegate
+    
+    func didUpdate(location: Location) {
+        // TODO:
+    }
+
 }

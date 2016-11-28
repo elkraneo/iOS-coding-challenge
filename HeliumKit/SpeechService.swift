@@ -24,17 +24,18 @@ public protocol SpeechServiceDelegate {
 }
 
 
-public final  class SpeechService: NSObject, SFSpeechRecognizerDelegate {
+public final class SpeechService: NSObject, SFSpeechRecognizerDelegate {
     
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))! //FIXME: implemet with Locale.current
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     private var delegate: SpeechServiceDelegate?
+
     
     public override init() {
         super.init()
-        print("💬 SpeechService started")
+        print("💬 Speech service: started")
     }
     
     public func requestAuthorization(delegate: SpeechServiceDelegate) {

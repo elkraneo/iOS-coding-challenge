@@ -15,12 +15,12 @@ class WeatherViewController: UIViewController, WeatherSpeechPresenterDelegate {
     @IBOutlet var textView : UITextView!
     @IBOutlet var recordButton: UIButton!
     
-    private var presenter: WeatherSpeechPresenter!
+    private var presenter: WeatherPresenter!
     
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.presenter = WeatherSpeechPresenter(delegate: self)
+        self.presenter = WeatherPresenter(delegate: self)
     }
     
     override func viewDidLoad() {
