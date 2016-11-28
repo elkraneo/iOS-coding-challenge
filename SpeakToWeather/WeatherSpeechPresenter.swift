@@ -24,11 +24,7 @@ class WeatherSpeechPresenter: SpeechServiceDelegate {
     private let keywords = ["weather", "location", "cold", "cool", "hot", "cloud", "clouds", "sun", "sunny", "outside", "gloves", "sky"]
     private var transcriptionWordList = [String]() {
         didSet {
-            var formattedText = ""
-            for word in transcriptionWordList {
-                formattedText += word.appending(" ")
-            }
-            self.transcriptionFormatted = formattedText
+            self.checkKeywordsInTranscription()
         }
     }
     private(set) var transcriptionFormatted = "(Go ahead, press Hello Weather!)" {
@@ -40,19 +36,22 @@ class WeatherSpeechPresenter: SpeechServiceDelegate {
     }
     private(set) var recordButtonTitle = "Hello Weather!" {
         didSet {
-            DispatchQueue.main.async {
-                self.delegate.speechStatusDidChange()
-            }
+            self.delegate.speechStatusDidChange()
         }
     }
     private(set) var recordButtonEnabled = false {
         didSet {
-            DispatchQueue.main.async {
-                self.delegate.speechStatusDidChange()
-            }
+            self.delegate.speechStatusDidChange()
         }
     }
-    private(set) var forecastGraphicSummary: String?
+    private lazy var forecastGraphicSummary: String =  {
+        self.weatherService.load(resource: Forecast.all) { result in
+            guard let graphicSummary = result?.graphicSummary else { return }
+            self.forecastGraphicSummary = graphicSummary
+        }
+        
+        return "🛰"
+    }()
     
     
     init(delegate: WeatherSpeechPresenterDelegate) {
@@ -62,22 +61,23 @@ class WeatherSpeechPresenter: SpeechServiceDelegate {
     }
     
     func checkKeywordsInTranscription() {
-        for word in keywords {
-            transcriptionWordList = transcriptionWordList.map {
-                return $0 == word ? appendWeather(to: $0) : $0
-            }
-        }
-    }
-    
-    func appendWeather(to aString: String) -> String {
-        if forecastGraphicSummary == nil  {
-            weatherService.load(resource: Forecast.all) { result in
-                self.forecastGraphicSummary = result?.graphicSummary
-                self.checkKeywordsInTranscription()
+        for keyword in keywords {
+            for (index, value) in transcriptionWordList.enumerated() {
+                if value.lowercased() == keyword {
+                    transcriptionWordList[index] = value.appending(" \(self.forecastGraphicSummary)")
+                }
             }
         }
         
-        return aString.appending(" \(self.forecastGraphicSummary ?? "🛰")")
+        formatTranscription()
+    }
+    
+    func formatTranscription() {
+        var formattedText = ""
+        for word in transcriptionWordList {
+            formattedText += word.appending(" ")
+        }
+        self.transcriptionFormatted = formattedText
     }
     
     func toggleRecording() {
@@ -90,13 +90,11 @@ class WeatherSpeechPresenter: SpeechServiceDelegate {
         print("💬 Speech ready.")
         recordButtonEnabled = true
         recordButtonTitle = "Hello Weather!"
-        forecastGraphicSummary = nil
     }
     
     func received(transcription: String) {
         print("💬 Received: \(transcription)")
         transcriptionWordList = transcription.words()
-        checkKeywordsInTranscription()
     }
     
     func recordStatusDidChange(running: Bool) {
@@ -105,6 +103,7 @@ class WeatherSpeechPresenter: SpeechServiceDelegate {
         } else {
             recordButtonEnabled = false
             recordButtonTitle = "Stopping"
+            //forecastGraphicSummary = nil
         }
     }
     
