@@ -21,8 +21,9 @@ class WeatherPresenter: SpeechServiceDelegate, ForecastDisplayable {
     private let keywords = ["weather", "location", "cold", "cool", "hot", "cloud", "clouds", "sun", "sunny", "outside", "gloves", "sky", "warm", "fog", "rain", "snow", "tornado"]
     private var transcriptionWords = [String]() {
         didSet {
-            appendForecastSummaryToKeyword()
-            delegate.speechTextReceived()
+            DispatchQueue.main.async {
+                self.delegate.speechTextReceived()
+            }
         }
     }
     var transcriptionFormatted: String {
@@ -45,11 +46,7 @@ class WeatherPresenter: SpeechServiceDelegate, ForecastDisplayable {
             delegate.speechStatusDidChange()
         }
     }
-    private var forecastSummary: String? {
-        didSet {
-            appendForecastSummaryToKeyword()
-        }
-    }
+    private var forecastSummary: String?
     private let delegate: WeatherSpeechPresenterDelegate
     
     
@@ -59,16 +56,19 @@ class WeatherPresenter: SpeechServiceDelegate, ForecastDisplayable {
     }
     
     /// Triggers the weather checking for current location in case of keyword detected
-    func appendForecastSummaryToKeyword() {
+    private func appendForecastSummaryToKeyword() {
         for keyword in keywords {
             for (index, value) in transcriptionWords.enumerated() {
-                if value.lowercased() == keyword {
+                let receivingEmoji = "🛰"
+                let formattedKeyword = value.replacingOccurrences(of: "[\(receivingEmoji)]", with: "").lowercased()
+
+                if formattedKeyword == keyword {
                     
                     if forecastSummary == nil {
                         Helium.requestForecastGraphicSummary(delegate: self)
                     }
                     
-                    transcriptionWords[index] = value.appending(" \(forecastSummary ?? "🛰")")
+                    transcriptionWords[index] = formattedKeyword.appending("[\(forecastSummary ?? receivingEmoji)]")
                 }
             }
         }
@@ -89,6 +89,7 @@ class WeatherPresenter: SpeechServiceDelegate, ForecastDisplayable {
     func received(transcription: String) {
         print("💬 : \(transcription)")
         transcriptionWords = transcription.words()
+        appendForecastSummaryToKeyword()
     }
     
     func recordStatusDidChange(running: Bool) {
@@ -136,6 +137,7 @@ class WeatherPresenter: SpeechServiceDelegate, ForecastDisplayable {
     // MARK: ForecastDisplayable
     
     func forecastSummaryDidUpdate(summary: String) {
-        self.forecastSummary = summary
+        forecastSummary = summary
+        appendForecastSummaryToKeyword()
     }
 }

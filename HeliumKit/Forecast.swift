@@ -35,7 +35,7 @@ public struct Forecast {
         let formatter = MeasurementFormatter()
         formatter.numberFormatter.maximumFractionDigits = 0
         let temperatureFormatted = formatter.string(from: measurement)
-        let composedGraphicSummary = "(\(iconGraphic) \(temperatureFormatted))"
+        let composedGraphicSummary = "\(iconGraphic) \(temperatureFormatted)"
         
         return composedGraphicSummary
     }
