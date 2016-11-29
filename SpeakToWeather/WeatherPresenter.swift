@@ -12,7 +12,7 @@ import HeliumKit
 
 protocol WeatherSpeechPresenterDelegate {
     func speechStatusDidChange() -> Void
-    func speechTextReceived(text: String) -> Void
+    func speechTextReceived() -> Void
 }
 
 
@@ -21,29 +21,33 @@ class WeatherPresenter: SpeechServiceDelegate, ForecastDisplayable {
     private let keywords = ["weather", "location", "cold", "cool", "hot", "cloud", "clouds", "sun", "sunny", "outside", "gloves", "sky", "warm", "fog", "rain", "snow", "tornado"]
     private var transcriptionWords = [String]() {
         didSet {
-            self.appendForecastSummaryToKeyword()
+            appendForecastSummaryToKeyword()
+            delegate.speechTextReceived()
         }
     }
-    private(set) var transcriptionFormatted = "(Go ahead, press Hello Weather!)" {
-        didSet {
-            DispatchQueue.main.async {
-                self.delegate.speechTextReceived(text: self.transcriptionFormatted)
-            }
+    var transcriptionFormatted: String {
+        guard !transcriptionWords.isEmpty else { return "(Go ahead, press Hello Weather!)" }
+        
+        var formattedText = ""
+        for word in transcriptionWords {
+            formattedText += word.appending(" ")
         }
+        
+        return formattedText
     }
     private(set) var recordButtonTitle = "Hello Weather!" {
         didSet {
-            self.delegate.speechStatusDidChange()
+            delegate.speechStatusDidChange()
         }
     }
     private(set) var recordButtonEnabled = false {
         didSet {
-            self.delegate.speechStatusDidChange()
+            delegate.speechStatusDidChange()
         }
     }
     private var forecastSummary: String? {
         didSet {
-            self.appendForecastSummaryToKeyword()
+            appendForecastSummaryToKeyword()
         }
     }
     private let delegate: WeatherSpeechPresenterDelegate
@@ -68,16 +72,6 @@ class WeatherPresenter: SpeechServiceDelegate, ForecastDisplayable {
                 }
             }
         }
-        
-        formatTranscription()
-    }
-    
-    func formatTranscription() {
-        var formattedText = ""
-        for word in transcriptionWords {
-            formattedText += word.appending(" ")
-        }
-        self.transcriptionFormatted = formattedText
     }
     
     func toggleRecording() {

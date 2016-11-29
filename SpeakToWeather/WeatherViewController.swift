@@ -43,7 +43,7 @@ class WeatherViewController: UIViewController, WeatherSpeechPresenterDelegate {
         recordButton.setTitle(presenter.recordButtonTitle, for: recordButton.isEnabled ? [] : .disabled)
     }
     
-    func speechTextReceived(text: String) {
+    func speechTextReceived() {
         textView.text = presenter.transcriptionFormatted
     }
 }
