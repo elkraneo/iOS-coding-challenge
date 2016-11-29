@@ -16,16 +16,12 @@ protocol WeatherSpeechPresenterDelegate {
 }
 
 
-class WeatherPresenter: SpeechServiceDelegate, LocationServiceDelegate {
+class WeatherPresenter: SpeechServiceDelegate, ForecastDisplayable {
     
-    private let weatherService = WeatherService()
-    private let speechService = SpeechService()
-    private let locationService = LocationService()
-    private let delegate: WeatherSpeechPresenterDelegate
     private let keywords = ["weather", "location", "cold", "cool", "hot", "cloud", "clouds", "sun", "sunny", "outside", "gloves", "sky", "warm", "fog", "rain", "snow", "tornado"]
-    private var transcriptionWordList = [String]() {
+    private var transcriptionWords = [String]() {
         didSet {
-            self.checkKeywordsInTranscription()
+            self.appendForecastSummaryToKeyword()
         }
     }
     private(set) var transcriptionFormatted = "(Go ahead, press Hello Weather!)" {
@@ -45,27 +41,26 @@ class WeatherPresenter: SpeechServiceDelegate, LocationServiceDelegate {
             self.delegate.speechStatusDidChange()
         }
     }
-    private lazy var forecastGraphicSummary: String? =  {
-        self.locationService.requestAuthorization()
-        self.weatherService.load(resource: Forecast.all) { result in
-            guard let graphicSummary = result?.graphicSummary else { return }
-            self.forecastGraphicSummary = graphicSummary
+    private var forecastSummary: String? {
+        didSet {
+            self.appendForecastSummaryToKeyword()
         }
-        
-        return "🛰"
-    }()
+    }
+    private let delegate: WeatherSpeechPresenterDelegate
     
     
     init(delegate: WeatherSpeechPresenterDelegate) {
         self.delegate = delegate
-        speechService.requestAuthorization(delegate: self)
+        Helium.requestSpeechAuthorization(delegate: self)
     }
     
-    func checkKeywordsInTranscription() {
+    /// Triggers the weather checking for current location in case of keyword detected
+    func appendForecastSummaryToKeyword() {
         for keyword in keywords {
-            for (index, value) in transcriptionWordList.enumerated() {
+            for (index, value) in transcriptionWords.enumerated() {
                 if value.lowercased() == keyword {
-                    transcriptionWordList[index] = value.appending(" \(self.forecastGraphicSummary)")
+                    Helium.requestForecastGraphicSummary(delegate: self)
+                    transcriptionWords[index] = value.appending(" \(self.forecastSummary)")
                 }
             }
         }
@@ -75,43 +70,42 @@ class WeatherPresenter: SpeechServiceDelegate, LocationServiceDelegate {
     
     func formatTranscription() {
         var formattedText = ""
-        for word in transcriptionWordList {
+        for word in transcriptionWords {
             formattedText += word.appending(" ")
         }
         self.transcriptionFormatted = formattedText
     }
     
     func toggleRecording() {
-        speechService.toggleRecording()
+        Helium.speechToggleRecording()
     }
     
     // MARK: SpeechServiceDelegate
     
     func ready() {
-        print("💬 Speech ready.")
+        print("💬 Speech ready")
         recordButtonEnabled = true
         recordButtonTitle = "Hello Weather!"
     }
     
     func received(transcription: String) {
-        print("💬 Received: \(transcription)")
-        transcriptionWordList = transcription.words()
+        print("💬 : \(transcription)")
+        transcriptionWords = transcription.words()
     }
     
     func recordStatusDidChange(running: Bool) {
         if running {
+            Helium.startUpdatingLocation()
             recordButtonTitle = "Stop recording"
-            locationService.startUpdatingLocation(delegate: self)
         } else {
+            Helium.stopUpdatingLocation()
             recordButtonEnabled = false
             recordButtonTitle = "Stopping"
-            locationService.stopUpdatingLocation()
-            // forecastGraphicSummary = nil
         }
     }
     
     func authorizationStatusDidChange(status: SpeechAuthorizationStatus) {
-        print("💬 Status changed: \(status)")
+        print("💬 Speech service status: \(status)")
         switch status {
         case .authorized:
             recordButtonEnabled = true
@@ -131,7 +125,7 @@ class WeatherPresenter: SpeechServiceDelegate, LocationServiceDelegate {
     }
     
     func availabilityDidChange(available: Bool) {
-        print("💬 Availability changed: \(available)")
+        print("💬 Speech service\(available ? "" : " not") available")
         if available {
             recordButtonEnabled = true
             recordButtonTitle = "Hello Weather!"
@@ -141,10 +135,9 @@ class WeatherPresenter: SpeechServiceDelegate, LocationServiceDelegate {
         }
     }
     
-    // MARK: LocationServiceDelegate
+    // MARK: ForecastDisplayable
     
-    func didUpdate(location: Location) {
-        // TODO:
+    func forecastSummaryDidUpdate(summary: String) {
+        self.forecastSummary = summary
     }
-
 }

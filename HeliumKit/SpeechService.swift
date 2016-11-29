@@ -10,7 +10,7 @@
 import Speech
 
 
-public enum SpeechAuthorizationStatus {
+public enum SpeechAuthorizationStatus: Int {
     case notDetermined, denied, restricted, authorized
 }
 
@@ -31,7 +31,7 @@ public final class SpeechService: NSObject, SFSpeechRecognizerDelegate {
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
     private var delegate: SpeechServiceDelegate?
-
+    
     
     public override init() {
         super.init()
@@ -43,21 +43,10 @@ public final class SpeechService: NSObject, SFSpeechRecognizerDelegate {
         
         speechRecognizer.delegate = self
         
-        SFSpeechRecognizer.requestAuthorization { authStatus in
+        SFSpeechRecognizer.requestAuthorization { status in
             OperationQueue.main.addOperation {
-                switch authStatus {
-                case .authorized:
-                    delegate.authorizationStatusDidChange(status: .authorized)
-                    
-                case .denied:
-                    delegate.authorizationStatusDidChange(status: .denied)
-                    
-                case .restricted:
-                    delegate.authorizationStatusDidChange(status: .restricted)
-                    
-                case .notDetermined:
-                    delegate.authorizationStatusDidChange(status: .notDetermined)
-                }
+                guard let authStatus = SpeechAuthorizationStatus(rawValue: status.rawValue) else { return }
+                delegate.authorizationStatusDidChange(status: authStatus)
             }
         }
     }

@@ -9,7 +9,12 @@
 
 
 private let darkSkyAPIKey = "d984b6b110ddbdc3e99363676241d039"
-private let url = URL(string: "https://api.darksky.net/forecast/\(darkSkyAPIKey)/\(WeatherService.location)")! //https://api.darksky.net/forecast/[key]/[latitude],[longitude]
+private let url = URL(string: "https://api.darksky.net/forecast/\(darkSkyAPIKey)/48.121,11.563")! //https://api.darksky.net/forecast/[key]/[latitude],[longitude]
+
+
+public protocol ForecastDisplayable {
+    func forecastSummaryDidUpdate(summary: String) -> Void
+}
 
 
 public struct Forecast {
@@ -17,7 +22,7 @@ public struct Forecast {
     let longitude: Double
     let timezone: String
     let currently: Currently?
-    public var graphicSummary: String? {
+    public var emojiedSummary: String? {
         guard let iconName = currently?.icon,
             let iconGraphic = WeatherIcon(rawValue: iconName)?.emojiDescription(),
             let temperature = currently?.temperature else { return nil }
@@ -57,6 +62,12 @@ extension Forecast {
 
 public extension Forecast {
     static let all = Resource<Forecast>(url: url, parseJSON: { json in
+        guard let dictionary = json as? JSONDictionary else { return nil }
+        
+        return Forecast(dictionary: dictionary)
+    })
+    
+    static let current = Resource<Forecast>(url: url, parseJSON: { json in
         guard let dictionary = json as? JSONDictionary else { return nil }
         
         return Forecast(dictionary: dictionary)

@@ -23,22 +23,36 @@ public struct Location {
 
 public final class LocationService: NSObject, CLLocationManagerDelegate {
     
-    private let locationManager = CLLocationManager()
     private var delegate: LocationServiceDelegate?
+    private var locationManager: CLLocationManager = CLLocationManager()
+    private var authorized: Bool = false {
+        didSet {
+            print("🌍 Location service\(authorized ? "" : " not") authorized")
+        }
+    }
+    private var locations = [CLLocation]()
+    public var lastLocation: Location? {
+        let location = locations.last?.coordinate
+        guard let latitude = location?.latitude,
+            let longitude = location?.longitude else { return nil }
+        
+        return Location(latitude: latitude, longitude: longitude)
+    }
+    
     
     public override init() {
         super.init()
+        
+        locationManager.delegate = self
+        
+        if CLLocationManager.authorizationStatus() == .notDetermined {
+            locationManager.requestWhenInUseAuthorization()
+        }
         print("🌍 Location service: started")
     }
     
-    public func requestAuthorization() {
-        self.locationManager.requestWhenInUseAuthorization()
-    }
-    
-    public func startUpdatingLocation(delegate: LocationServiceDelegate) {
+    public func startUpdatingLocation() {
         if CLLocationManager.locationServicesEnabled() {
-            self.delegate = delegate
-            locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
             locationManager.startUpdatingLocation()
         }
@@ -51,11 +65,17 @@ public final class LocationService: NSObject, CLLocationManagerDelegate {
     // MARK: CLLocationManagerDelegate
     
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let locValue = manager.location?.coordinate
-        guard let latitude = locValue?.latitude,
-            let longitude = locValue?.longitude else { return }
-        
-        delegate?.didUpdate(location: Location(latitude: latitude, longitude: longitude))
-        print("🌍 Location service: \(locValue?.latitude) \(locValue?.longitude)")
+        self.locations = locations
+    }
+    
+    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        OperationQueue.main.addOperation {
+            switch status {
+            case .authorizedAlways, .authorizedWhenInUse:
+                self.authorized = true
+            default:
+                self.authorized = false
+            }
+        }
     }
 }

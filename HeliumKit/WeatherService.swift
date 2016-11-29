@@ -12,7 +12,7 @@ public typealias JSONDictionary = [String: Any]
 
 public final class WeatherService {
     
-    static private(set) var location = "48.121,11.563" //[latitude],[longitude]
+    private(set) var location = "48.121,11.563" //[latitude],[longitude]
     
     
     public init() {
@@ -27,5 +27,9 @@ public final class WeatherService {
             }
             completion(resource.parse(data))
             }.resume()
+    }
+    
+    public func update(location: String) {
+        self.location = location
     }
 }

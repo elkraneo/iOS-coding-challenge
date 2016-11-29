@@ -25,6 +25,8 @@
 		AE480B121DE9B27C00A26577 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE480B111DE9B27C00A26577 /* Resource.swift */; };
 		AE480B141DE9B44200A26577 /* Currently.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE480B131DE9B44200A26577 /* Currently.swift */; };
 		AE5E03561DEBC4BC0093C22B /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5E03551DEBC4BC0093C22B /* LocationService.swift */; };
+		AE97D0D71DEDB9A0000CFD41 /* Helium.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE97D0D61DEDB9A0000CFD41 /* Helium.swift */; };
+		AE97D0DA1DEDBCCC000CFD41 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE97D0D91DEDBCCC000CFD41 /* Manager.swift */; };
 		AEDBD0CD1DEB4F2B00B092EA /* String+Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDBD0CC1DEB4F2B00B092EA /* String+Words.swift */; };
 		AEE4CD761DEB025B00C9EC78 /* WeatherPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE4CD751DEB025B00C9EC78 /* WeatherPresenter.swift */; };
 /* End PBXBuildFile section */
@@ -98,6 +100,8 @@
 		AE480B111DE9B27C00A26577 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		AE480B131DE9B44200A26577 /* Currently.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currently.swift; sourceTree = "<group>"; };
 		AE5E03551DEBC4BC0093C22B /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		AE97D0D61DEDB9A0000CFD41 /* Helium.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helium.swift; sourceTree = "<group>"; };
+		AE97D0D91DEDBCCC000CFD41 /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		AEDBD0CC1DEB4F2B00B092EA /* String+Words.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Words.swift"; sourceTree = "<group>"; };
 		AEE4CD751DEB025B00C9EC78 /* WeatherPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -184,13 +188,15 @@
 		AE480AEF1DE9AE8A00A26577 /* HeliumKit */ = {
 			isa = PBXGroup;
 			children = (
+				AE97D0D81DEDBCC1000CFD41 /* Core */,
+				AE97D0D61DEDB9A0000CFD41 /* Helium.swift */,
 				AE480AF01DE9AE8A00A26577 /* HeliumKit.h */,
 				AE480AF11DE9AE8A00A26577 /* Info.plist */,
-				AE480B0C1DE9B0B700A26577 /* Models */,
-				AE480B0F1DE9B20A00A26577 /* WeatherService.swift */,
-				AE14A8E31DEA2C6B007F9A3E /* SpeechService.swift */,
 				AE5E03551DEBC4BC0093C22B /* LocationService.swift */,
+				AE480B0C1DE9B0B700A26577 /* Models */,
+				AE14A8E31DEA2C6B007F9A3E /* SpeechService.swift */,
 				AEDBD0CC1DEB4F2B00B092EA /* String+Words.swift */,
+				AE480B0F1DE9B20A00A26577 /* WeatherService.swift */,
 			);
 			path = HeliumKit;
 			sourceTree = "<group>";
@@ -213,6 +219,14 @@
 				AE480B111DE9B27C00A26577 /* Resource.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		AE97D0D81DEDBCC1000CFD41 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AE97D0D91DEDBCCC000CFD41 /* Manager.swift */,
+			);
+			name = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -424,6 +438,8 @@
 				AE480B0E1DE9B0C400A26577 /* Forecast.swift in Sources */,
 				AE14A8E41DEA2C6B007F9A3E /* SpeechService.swift in Sources */,
 				AEDBD0CD1DEB4F2B00B092EA /* String+Words.swift in Sources */,
+				AE97D0D71DEDB9A0000CFD41 /* Helium.swift in Sources */,
+				AE97D0DA1DEDBCCC000CFD41 /* Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,7 +652,6 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 73R4GPW85H;
@@ -661,7 +676,6 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 73R4GPW85H;
