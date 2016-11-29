@@ -13,6 +13,7 @@ public struct Helium {
     static public func requestForecastGraphicSummary(delegate: ForecastDisplayable) {
         guard let location = Manager.default.locationService.lastLocation else { return /* TODO: handle lack of last location */ }
         
+        Manager.default.weatherService.update(locationStringParameter: "\(location.latitude),\(location.longitude)")
         Manager.default.weatherService.load(resource: Forecast.all) { (forecast) in
             guard let emojiedSummary = forecast?.emojiedSummary else { return }
             

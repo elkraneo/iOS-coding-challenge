@@ -9,7 +9,11 @@
 
 
 private let darkSkyAPIKey = "d984b6b110ddbdc3e99363676241d039"
-private let url = URL(string: "https://api.darksky.net/forecast/\(darkSkyAPIKey)/48.121,11.563")! //https://api.darksky.net/forecast/[key]/[latitude],[longitude]
+private let darkSkyURL = "https://api.darksky.net/forecast"
+private var url: URL {
+    // [url]/[key]/[latitude],[longitude]
+    return URL(string: "\(darkSkyURL)/\(darkSkyAPIKey)/\( Manager.default.weatherService.locationStringParameter)")!
+}
 
 
 public protocol ForecastDisplayable {

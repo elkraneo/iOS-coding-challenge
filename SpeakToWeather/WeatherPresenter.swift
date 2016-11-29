@@ -59,8 +59,12 @@ class WeatherPresenter: SpeechServiceDelegate, ForecastDisplayable {
         for keyword in keywords {
             for (index, value) in transcriptionWords.enumerated() {
                 if value.lowercased() == keyword {
-                    Helium.requestForecastGraphicSummary(delegate: self)
-                    transcriptionWords[index] = value.appending(" \(self.forecastSummary)")
+                    
+                    if forecastSummary == nil {
+                        Helium.requestForecastGraphicSummary(delegate: self)
+                    }
+                    
+                    transcriptionWords[index] = value.appending(" \(forecastSummary ?? "🛰")")
                 }
             }
         }
@@ -105,7 +109,7 @@ class WeatherPresenter: SpeechServiceDelegate, ForecastDisplayable {
     }
     
     func authorizationStatusDidChange(status: SpeechAuthorizationStatus) {
-        print("💬 Speech service status: \(status)")
+        print("💬 Speech service \(status)")
         switch status {
         case .authorized:
             recordButtonEnabled = true
