@@ -13,11 +13,13 @@ import HeliumKit
 protocol WeatherSpeechPresenterDelegate {
     func speechStatusDidChange() -> Void
     func speechTextReceived() -> Void
+    func locationStatusDidChange() -> Void
 }
 
 
-class WeatherPresenter: SpeechServiceDelegate, ForecastDisplayable {
+class WeatherPresenter: SpeechServiceDelegate, LocationServiceDelegate, ForecastDisplayable {
     
+    private let defaultMessage = "(Go ahead, press Hello Weather!)"
     private let keywords = ["weather", "location", "cold", "cool", "hot", "cloud", "clouds", "sun", "sunny", "outside", "gloves", "sky", "warm", "fog", "rain", "snow", "tornado"]
     private var transcriptionWords = [String]() {
         didSet {
@@ -27,7 +29,7 @@ class WeatherPresenter: SpeechServiceDelegate, ForecastDisplayable {
         }
     }
     var transcriptionFormatted: String {
-        guard !transcriptionWords.isEmpty else { return "(Go ahead, press Hello Weather!)" }
+        guard !transcriptionWords.isEmpty else { return defaultMessage }
         
         var formattedText = ""
         for word in transcriptionWords {
@@ -48,11 +50,16 @@ class WeatherPresenter: SpeechServiceDelegate, ForecastDisplayable {
     }
     private var forecastSummary: String?
     private let delegate: WeatherSpeechPresenterDelegate
-    
+    private(set) var locationStatusMessage: String? {
+        didSet {
+            delegate.locationStatusDidChange()
+        }
+    }
     
     init(delegate: WeatherSpeechPresenterDelegate) {
         self.delegate = delegate
         Helium.requestSpeechAuthorization(delegate: self)
+        Helium.requestLocationAuthorization(delegate: self)
     }
     
     /// Triggers the weather checking for current location in case of keyword detected
@@ -61,7 +68,7 @@ class WeatherPresenter: SpeechServiceDelegate, ForecastDisplayable {
             for (index, value) in transcriptionWords.enumerated() {
                 let receivingEmoji = "🛰"
                 let formattedKeyword = value.replacingOccurrences(of: "[\(receivingEmoji)]", with: "").lowercased()
-
+                
                 if formattedKeyword == keyword {
                     
                     if forecastSummary == nil {
@@ -131,6 +138,22 @@ class WeatherPresenter: SpeechServiceDelegate, ForecastDisplayable {
         } else {
             recordButtonEnabled = false
             recordButtonTitle = "Recognition not available"
+        }
+    }
+    
+    // MARK: LocationServiceDelegate
+    
+    func authorizationStatusDidChange(status: LocationAuthorizationStatus) {
+        print("🌍 Location service \(status)")
+        switch status {
+        case .notDetermined:
+            locationStatusMessage = "Location not yet authorized"
+        case .restricted:
+            locationStatusMessage = "Location restricted on this device"
+        case .denied:
+            locationStatusMessage = "User denied access to Location"
+        default:
+            locationStatusMessage = defaultMessage
         }
     }
     

@@ -16,9 +16,14 @@ public struct Helium {
         Manager.default.weatherService.update(locationStringParameter: "\(location.latitude),\(location.longitude)")
         Manager.default.weatherService.load(resource: Forecast.all) { (forecast) in
             guard let emojiedSummary = forecast?.emojiedSummary else { return }
-            
             delegate.forecastSummaryDidUpdate(summary: emojiedSummary)
         }
+    }
+    
+    //  MARK: Location
+    
+    static public func requestLocationAuthorization(delegate: LocationServiceDelegate) {
+        Manager.default.locationService.requestAuthorization(delegate: delegate)
     }
     
     static public func startUpdatingLocation() {
@@ -28,6 +33,8 @@ public struct Helium {
     static public func stopUpdatingLocation() {
         Manager.default.locationService.stopUpdatingLocation()
     }
+    
+    //  MARK: Speech
     
     static public func requestSpeechAuthorization(delegate: SpeechServiceDelegate) {
         Manager.default.speechService.requestAuthorization(delegate: delegate)

@@ -10,8 +10,13 @@
 import CoreLocation
 
 
+public enum LocationAuthorizationStatus: Int {
+    case notDetermined, restricted, denied, authorizedWhenInUse, authorizedAlways
+}
+
+
 public protocol LocationServiceDelegate {
-    func didUpdate(location: Location) -> Void
+    func authorizationStatusDidChange(status: LocationAuthorizationStatus) -> Void
 }
 
 
@@ -23,13 +28,7 @@ public struct Location {
 
 public final class LocationService: NSObject, CLLocationManagerDelegate {
     
-    private var delegate: LocationServiceDelegate?
     private var locationManager: CLLocationManager = CLLocationManager()
-    private var authorized: Bool = false {
-        didSet {
-            print("🌍 Location service\(authorized ? "" : " not") authorized")
-        }
-    }
     private var locations = [CLLocation]()
     public var lastLocation: Location? {
         let location = locations.last?.coordinate
@@ -38,17 +37,26 @@ public final class LocationService: NSObject, CLLocationManagerDelegate {
         
         return Location(latitude: latitude, longitude: longitude)
     }
+    private var delegate: LocationServiceDelegate?
     
     
     public override init() {
         super.init()
+        print("🌍 Location service: started")
+    }
+    
+    public func requestAuthorization(delegate: LocationServiceDelegate) {
+        self.delegate = delegate
         
         locationManager.delegate = self
         
+        requestWhenInUseAuthorization()
+    }
+    
+    func requestWhenInUseAuthorization() {
         if CLLocationManager.authorizationStatus() == .notDetermined {
             locationManager.requestWhenInUseAuthorization()
         }
-        print("🌍 Location service: started")
     }
     
     public func startUpdatingLocation() {
@@ -69,13 +77,10 @@ public final class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        requestWhenInUseAuthorization()
         OperationQueue.main.addOperation {
-            switch status {
-            case .authorizedAlways, .authorizedWhenInUse:
-                self.authorized = true
-            default:
-                self.authorized = false
-            }
+            guard let authStatus = LocationAuthorizationStatus(rawValue: Int(status.rawValue)) else { return }
+            self.delegate?.authorizationStatusDidChange(status: authStatus)
         }
     }
 }
