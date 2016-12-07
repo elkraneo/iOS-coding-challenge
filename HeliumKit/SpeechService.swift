@@ -26,7 +26,7 @@ public protocol SpeechServiceDelegate {
 
 public final class SpeechService: NSObject, SFSpeechRecognizerDelegate {
     
-    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))! //FIXME: implemet with Locale.current
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))! //FIXME: implement with Locale.current to allow user language
     private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     private var recognitionTask: SFSpeechRecognitionTask?
     private let audioEngine = AVAudioEngine()
@@ -109,20 +109,15 @@ public final class SpeechService: NSObject, SFSpeechRecognizerDelegate {
         if audioEngine.isRunning {
             audioEngine.stop()
             recognitionRequest?.endAudio()
-            self.delegate?.recordStatusDidChange(running: false)
         } else {
             try! startRecording()
-            self.delegate?.recordStatusDidChange(running: true)
         }
+        self.delegate?.recordStatusDidChange(running: audioEngine.isRunning)
     }
     
     // MARK: SFSpeechRecognizerDelegate
     
     public func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
-        if available {
-            delegate?.availabilityDidChange(available: true)
-        } else {
-            delegate?.availabilityDidChange(available: false)
-        }
+        delegate?.availabilityDidChange(available: available)
     }
 }

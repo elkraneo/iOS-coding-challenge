@@ -46,4 +46,8 @@ class WeatherViewController: UIViewController, WeatherSpeechPresenterDelegate {
     func speechTextReceived() {
         textView.text = presenter.transcriptionFormatted
     }
+    
+    func locationStatusDidChange() {
+        textView.text = presenter.locationStatusMessage
+    }
 }
